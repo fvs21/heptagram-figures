@@ -29,16 +29,13 @@ export default function Navbar() {
           </Link>
           <div className="hidden md:flex items-center gap-8 lg:gap-12">
             {isHome ? (
-              ["Collection", "About"].map((item) => (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  className="font-altar text-[11px] tracking-[0.25em] uppercase text-parchment/70 hover:text-gold transition-colors duration-500 relative group"
-                >
-                  {item}
-                  <span className="absolute -bottom-1 left-0 w-0 h-px bg-gold/40 group-hover:w-full transition-all duration-500" />
-                </a>
-              ))
+              <a
+                href={`#collection`}
+                className="font-altar text-[11px] tracking-[0.25em] uppercase text-parchment/70 hover:text-gold transition-colors duration-500 relative group"
+              >
+                Collection
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-gold/40 group-hover:w-full transition-all duration-500" />
+              </a>
             ) : (
               <Link
                 to="/"
