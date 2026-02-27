@@ -1,0 +1,322 @@
+@import "tailwindcss";
+
+@theme {
+  --color-void: #0a0a0a;
+  --color-obsidian: #111111;
+  --color-charcoal: #1a1a1a;
+  --color-ash: #2a2a2a;
+  --color-smoke: #3a3a3a;
+  --color-ember: #4a4a4a;
+  --color-bone: #c8c0b0;
+  --color-parchment: #a89f91;
+  --color-gold: #B8860B;
+  --color-gold-dim: #8a6508;
+  --color-gold-faint: #5a4206;
+  --color-crimson: #8B0000;
+  --color-crimson-bright: #a01010;
+  --color-bronze: #CD7F32;
+  --color-bronze-dim: #9a5e25;
+
+  --font-ritual: "Cinzel Decorative", "Cinzel", serif;
+  --font-altar: "Cinzel", serif;
+  --font-body: "EB Garamond", "Garamond", serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-void);
+  color: var(--color-bone);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: var(--color-gold);
+  color: var(--color-void);
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-void);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-ash);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold-dim);
+}
+
+.grain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+.vignette::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(0, 0, 0, 0.7) 100%);
+}
+
+.golden-line {
+  height: 1px;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      var(--color-gold-dim) 20%,
+      var(--color-gold) 50%,
+      var(--color-gold-dim) 80%,
+      transparent 100%);
+  opacity: 0.4;
+}
+
+.text-glow {
+  text-shadow:
+    0 0 20px rgba(184, 134, 11, 0.3),
+    0 0 40px rgba(184, 134, 11, 0.1);
+}
+
+.text-glow-crimson {
+  text-shadow:
+    0 0 20px rgba(139, 0, 0, 0.4),
+    0 0 40px rgba(139, 0, 0, 0.15);
+}
+
+@keyframes slow-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes slow-spin-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes breathe {
+
+  0%,
+  100% {
+    opacity: 0.12;
+  }
+
+  50% {
+    opacity: 0.25;
+  }
+}
+
+@keyframes breathe-strong {
+
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes reveal-line {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-slow-spin {
+  animation: slow-spin 120s linear infinite;
+}
+
+.animate-slow-spin-reverse {
+  animation: slow-spin-reverse 90s linear infinite;
+}
+
+.animate-breathe {
+  animation: breathe 6s ease-in-out infinite;
+}
+
+.animate-breathe-strong {
+  animation: breathe-strong 4s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 1s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-fade-in {
+  animation: fade-in 1.5s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-reveal-line {
+  animation: reveal-line 1.5s ease-out forwards;
+  transform-origin: center;
+  transform: scaleX(0);
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.delay-400 {
+  animation-delay: 400ms;
+}
+
+.delay-500 {
+  animation-delay: 500ms;
+}
+
+.delay-600 {
+  animation-delay: 600ms;
+}
+
+.delay-700 {
+  animation-delay: 700ms;
+}
+
+.delay-800 {
+  animation-delay: 800ms;
+}
+
+.delay-900 {
+  animation-delay: 900ms;
+}
+
+.delay-1000 {
+  animation-delay: 1000ms;
+}
+
+.delay-1200 {
+  animation-delay: 1200ms;
+}
+
+.delay-1500 {
+  animation-delay: 1500ms;
+}
+
+.delay-2000 {
+  animation-delay: 2000ms;
+}
+
+.delay-2500 {
+  animation-delay: 2500ms;
+}
+
+.delay-3000 {
+  animation-delay: 3000ms;
+}
+
+.figure-card {
+  position: relative;
+  overflow: visible;
+}
+
+.figure-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid transparent;
+  border-radius: 1rem;
+  transition: border-color 0.6s ease;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.figure-card:hover::before {
+  border-color: var(--color-gold-dim);
+}
+
+.figure-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 1rem;
+  background: radial-gradient(ellipse at center bottom, rgba(184, 134, 11, 0.06) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.figure-card:hover::after {
+  opacity: 1;
+}
